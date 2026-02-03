@@ -1,0 +1,65 @@
+\doxysection{graf.\+h File Reference}
+\hypertarget{graf_8h}{}\label{graf_8h}\index{graf.h@{graf.h}}
+
+
+Definicja struktury grafu oraz funkcji wczytującej dane z pliku.  
+
+
+{\ttfamily \+\#include $<$map$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \doxymbox{\hyperlink{graf_8h_a590d40734896bdfaa25a87975c5c7d5d}{Graf}} = std::\+map$<$int, std::\+vector$<$int$>$$>$
+\begin{DoxyCompactList}\small\item\em Reprezentacja grafu jako lista sąsiedztwa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{graf_8h_a590d40734896bdfaa25a87975c5c7d5d}{Graf}} \doxymbox{\hyperlink{graf_8h_ad06d2c2d4549c4dee2fcbce190e557a1}{dane\+Wejsciowe}} (const std::\+string \&nazwa\+Pliku)
+\begin{DoxyCompactList}\small\item\em Wczytuje graf skierowany z pliku. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definicja struktury grafu oraz funkcji wczytującej dane z pliku. 
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{graf_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{graf_8h_a590d40734896bdfaa25a87975c5c7d5d}\index{graf.h@{graf.h}!Graf@{Graf}}
+\index{Graf@{Graf}!graf.h@{graf.h}}
+\doxysubsubsection{\texorpdfstring{Graf}{Graf}}
+{\footnotesize\ttfamily \label{graf_8h_a590d40734896bdfaa25a87975c5c7d5d} 
+using \doxymbox{\hyperlink{graf_8h_a590d40734896bdfaa25a87975c5c7d5d}{Graf}} = std::\+map$<$int, std::\+vector$<$int$>$$>$}
+
+
+
+Reprezentacja grafu jako lista sąsiedztwa. 
+
+Klucz mapy to numer wierzchołka, wartość to lista jego sąsiadów (krawędzie wychodzące). 
+
+\label{doc-func-members}
+\Hypertarget{graf_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{graf_8h_ad06d2c2d4549c4dee2fcbce190e557a1}\index{graf.h@{graf.h}!daneWejsciowe@{daneWejsciowe}}
+\index{daneWejsciowe@{daneWejsciowe}!graf.h@{graf.h}}
+\doxysubsubsection{\texorpdfstring{daneWejsciowe()}{daneWejsciowe()}}
+{\footnotesize\ttfamily \label{graf_8h_ad06d2c2d4549c4dee2fcbce190e557a1} 
+\doxymbox{\hyperlink{graf_8h_a590d40734896bdfaa25a87975c5c7d5d}{Graf}} dane\+Wejsciowe (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{nazwa\+Pliku}{}\end{DoxyParamCaption})}
+
+
+
+Wczytuje graf skierowany z pliku. 
+
+Format danych wejściowych:\+ 1 -\/\texorpdfstring{$>$}{>} 2, 1 -\/\texorpdfstring{$>$}{>} 3, 2 -\/\texorpdfstring{$>$}{>} 4
+
+
+\begin{DoxyParams}{Parameters}
+{\em nazwa\+Pliku} & Ścieżka do pliku wejściowego \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{graf_8h_a590d40734896bdfaa25a87975c5c7d5d}{Graf} w postaci mapy sąsiedztwa 
+\end{DoxyReturn}

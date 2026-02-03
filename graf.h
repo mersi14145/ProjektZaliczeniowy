@@ -1,18 +1,32 @@
+/**
+ * @file graf.h
+ * @brief Definicja struktury grafu oraz funkcji wczytującej dane z pliku.
+ */
+
 #ifndef GRAF_H
 #define GRAF_H
 
 #include <map>
 #include <vector>
 #include <string>
-#include <iostream>
-#include <fstream>
-#include <sstream>
 
+/**
+ * @brief Reprezentacja grafu jako lista sąsiedztwa.
+ *
+ * Klucz mapy to numer wierzchołka,
+ * wartość to lista jego sąsiadów (krawędzie wychodzące).
+ */
+using Graf = std::map<int, std::vector<int>>;
 
-using namespace std;
+/**
+ * @brief Wczytuje graf skierowany z pliku.
+ *
+ * Format danych wejściowych:
+ * 1 -> 2, 1 -> 3, 2 -> 4
+ *
+ * @param nazwaPliku Ścieżka do pliku wejściowego
+ * @return Graf w postaci mapy sąsiedztwa
+ */
+Graf daneWejsciowe(const std::string& nazwaPliku);
 
-using Graf = map<int, vector<int>>;
-
-Graf daneWejsciowe(const string& nazwaPliku);
-
-#endif // GRAF_H
+#endif

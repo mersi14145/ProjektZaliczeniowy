@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * @brief Punkt wejścia programu. Obsługa argumentów i uruchomienie DFS.
+ */
+
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -5,48 +10,38 @@
 #include "graf.h"
 #include "cyklometr.h"
 
-using namespace std;
-
-
 int main(int argc, char* argv[]) {
 
     if (argc == 1) {
-        cout << "Schemat użycia: program -i plik_wej -o plik_wyj" << endl;
+        std::cout << "Schemat uzycia: program -i plik_wej -o plik_wyj\n";
         return 0;
     }
 
-    string flagaPWe = "-i";
-    string pWejsciowy;
+    std::string plikWej;
+    std::string plikWyj;
 
-    string flagaPWy = "-o";
-    string pWynikowy;
-    
-    for(int i = argc - 1; i > 0; i--) {
-        
-        if(strcmp(argv[i], "-i") == 0 && i + 1 < argc)    {
-            cout << "znaleziono flage: " << flagaPWe << endl <<  "Dla pliku wejściowego: " << argv[i + 1] << endl;
-            pWejsciowy =  argv[i + 1];
-        }
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "-i") == 0 && i + 1 < argc)
+            plikWej = argv[i + 1];
 
-        if(strcmp(argv[i], "-o") == 0 && i + 1 < argc)    {
-            cout << "znaleziono flage: " << flagaPWy << endl <<  "Dla pliku wynikowego: " << argv[i + 1] << endl;
-            pWynikowy =  argv[i + 1];
-        }
-        
+        if (strcmp(argv[i], "-o") == 0 && i + 1 < argc)
+            plikWyj = argv[i + 1];
     }
 
-    Graf graf = daneWejsciowe(pWejsciowy);
+    Graf graf = daneWejsciowe(plikWej);
 
-    ofstream str_wyjsciowy(pWynikowy);
-    map<int, bool> odwiedzone;
-    
-    int start = graf.begin()->first;
-    SZUKACZ(start, graf, odwiedzone, str_wyjsciowy);
+    std::ofstream str_wyjsciowy(plikWyj);
 
-    str_wyjsciowy.close();
+    std::map<int, bool> odwiedzone;
+    std::map<int, bool> naStosie;
+    std::vector<int> sciezka;
+
+    // DFS dla całego grafu (wszystkie składowe)
+    for (const auto& p : graf) {
+        if (!odwiedzone[p.first]) {
+            SZUKACZ(p.first, graf, odwiedzone, naStosie, sciezka, str_wyjsciowy);
+        }
+    }
 
     return 0;
-
-    
-
 }

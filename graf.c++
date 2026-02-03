@@ -1,27 +1,32 @@
+/**
+ * @file graf.cpp
+ * @brief Implementacja funkcji wczytującej graf z pliku.
+ */
+
 #include "graf.h"
+#include <fstream>
+#include <sstream>
 
-using namespace std;
-
-Graf daneWejsciowe(const string& Plik) {
+Graf daneWejsciowe(const std::string& Plik) {
     Graf graf;
-    ifstream str_czytający(Plik);
-    string linijki;
+    std::ifstream str_czytajacy(Plik);
+    std::string linia;
 
-    while (getline(str_czytający, linijki)) {
-        stringstream sl(linijki);  //sl = strumień linii
-        string krawedz;
+    while (getline(str_czytajacy, linia)) {
+        std::stringstream ss_linia(linia);
+        std::string fragment;
 
-        while (getline(sl, krawedz, ',')) {
-            stringstream sk(krawedz); //sk = strumień krawędzi
+        // rozbijanie po przecinkach
+        while (getline(ss_linia, fragment, ',')) {
+            std::stringstream ss(fragment);
             int od, doo;
-            char a1, a2;    // a1 i a2 to strzałki "->"
+            char a1, a2; // '-' i '>'
 
-            if (sk >> od >> a1 >> a2 >> doo) {
+            if (ss >> od >> a1 >> a2 >> doo) {
                 graf[od].push_back(doo);
             }
         }
     }
-    str_czytający.close();
+
     return graf;
 }
-
